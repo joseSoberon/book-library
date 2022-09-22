@@ -1,0 +1,44 @@
+body {
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-header {
+    background-color: #B1B2FF;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    grid-column: 2 / 3;
+    justify-self: center;
+    align-self: center;
+}
+
+#add-button {
+    background: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 25%;
+    padding: 0.5rem;
+    grid-column: 3 / 4;
+    justify-self: center;
+    align-self: center;
+}
+
+#add-button:hover {
+    background-color: rgba(170, 196, 255, 0.75);
+}
+
+.flex-main {
+    display: flex;
+    flex: 1;
+    background-color: #EEF1FF;
+}
