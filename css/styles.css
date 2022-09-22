@@ -21,7 +21,7 @@ h1 {
     align-self: center;
 }
 
-#add-button {
+.button {
     background: none;
     border: 2px solid black;
     border-radius: 5px;
@@ -39,7 +39,9 @@ h1 {
 
 .flex-main {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    padding: 2rem;
     flex: 1;
     background-color: #EEF1FF;
 }
@@ -91,6 +93,7 @@ form > button:hover {
 }
 
 .book-card {
+    margin: 2rem;
     height: 300px;
     width: 300px;
     background-color: white;

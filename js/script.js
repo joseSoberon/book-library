@@ -1,6 +1,5 @@
 let main = document.querySelector(".flex-main");
 let addButton = document.querySelector("#add-button");
-let removeButton = document.querySelector("#remove");
 
 let addBook;
 
@@ -26,6 +25,8 @@ addButton.addEventListener("click", () => {
         }
     })
 })
+
+
 
 function checkExist(element) {
     let child = element.querySelector(".new-book");
@@ -140,6 +141,11 @@ function createBookCard(book) {
     let button = document.createElement("btn");
     button.setAttribute("id", "remove");
     button.textContent = "Remove book";
+
+    button.addEventListener("click", () => {
+        button.parentElement.remove();
+    })
+
     container.appendChild(button)
 
     return container;
