@@ -42,3 +42,45 @@ h1 {
     flex: 1;
     background-color: #EEF1FF;
 }
+
+/* Add new book */
+.new-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 250px;
+    max-height: 300px;
+    padding: 1.5rem;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.new-book > h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.book-field {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+label {
+    text-align: start;
+}
+
+form > button {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 0.25rem;
+    width: 100px;
+    margin-top: 1rem;
+}
+
+form > button:hover {
+    background-color: rgba(200, 200, 200, 0.8);
+}
