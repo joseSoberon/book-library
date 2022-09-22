@@ -1,8 +1,41 @@
 let main = document.querySelector(".flex-main");
+let addButton = document.querySelector("#add-button");
 
-let newBook = newBookCard();
+let addBook;
 
-main.appendChild(newBook);
+let books = [];
+
+addButton.addEventListener("click", () => {
+    if (!checkExist(main)) {
+        main.appendChild(newBookCard());
+        addBook = document.querySelector("#new-book-button");
+    }
+
+    addBook.addEventListener("click", () => {
+        let newBookContainer = document.querySelector("form");
+        if (newBookContainer[0].value == "" || newBookContainer[1].value == "" || newBookContainer[2].value == "") {
+            console.log("Please fill the form")
+        }
+        else {
+            createBookObject(newBookContainer);
+            main.removeChild(main.lastChild);
+        }
+    })
+})
+
+function createBookObject(container) {
+    class Book {
+        constructor() {
+            this.title = container.querySelector("#title").value;
+            this.author = container.querySelector("#author").value;
+            this.pages = container.querySelector("#pages").value;
+            this.read = container.querySelector("#read").checked;
+        }
+    }
+
+    let newBook = new Book();
+    books.push(newBook);
+}
 
 /*
 let books = [];
@@ -26,6 +59,14 @@ addButton.addEventListener("click", () => {
 })
 */
 
+function checkExist(element) {
+    let child = element.querySelector(".new-book");
+
+    if (child == null) {
+        return false;
+    }
+    return true;
+}
 
 function newBookCard() {
     let container = document.createElement("div");
@@ -77,9 +118,6 @@ function createField(name, type) {
     input.setAttribute("type", type);
     input.setAttribute("id", name);
     input.setAttribute("name", name);
-    if (type == "checkbox") {
-        input.setAttribute("value", "yes");
-    }
 
     bookField.appendChild(label);
     bookField.appendChild(input);
