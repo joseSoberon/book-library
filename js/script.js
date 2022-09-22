@@ -1,5 +1,6 @@
 let main = document.querySelector(".flex-main");
 let addButton = document.querySelector("#add-button");
+let removeButton = document.querySelector("#remove");
 
 let addBook;
 
@@ -17,47 +18,14 @@ addButton.addEventListener("click", () => {
             console.log("Please fill the form")
         }
         else {
-            createBookObject(newBookContainer);
+            let newBook = createBookObject(newBookContainer);
             main.removeChild(main.lastChild);
+
+            let bookContainer = createBookCard(newBook);
+            main.appendChild(bookContainer);
         }
     })
 })
-
-function createBookObject(container) {
-    class Book {
-        constructor() {
-            this.title = container.querySelector("#title").value;
-            this.author = container.querySelector("#author").value;
-            this.pages = container.querySelector("#pages").value;
-            this.read = container.querySelector("#read").checked;
-        }
-    }
-
-    let newBook = new Book();
-    books.push(newBook);
-}
-
-/*
-let books = [];
-
-const addBook = e => {
-    let book = {
-        title: document.getElementById("book-title").value,
-        author: document.getElementById("book-author").value,
-        pages: document.getElementById("pages").value,
-        read: document.getElementById("read").value
-    }
-    books.push(book);
-    document.forms[0].reset();
-}
-
-let addButton = document.querySelector("#new-book-button");
-
-addButton.addEventListener("click", () => {
-    addBook();
-    console.log(books);
-})
-*/
 
 function checkExist(element) {
     let child = element.querySelector(".new-book");
@@ -123,4 +91,71 @@ function createField(name, type) {
     bookField.appendChild(input);
 
     return bookField;
+}
+
+function createBookObject(container) {
+    class Book {
+        constructor() {
+            this.title = container.querySelector("#title").value;
+            this.author = container.querySelector("#author").value;
+            this.pages = container.querySelector("#pages").value;
+            this.read = container.querySelector("#read").checked;
+        }
+    }
+
+    let newBook = new Book();
+    books.push(newBook);
+
+    return newBook;
+}
+
+
+function createBookCard(book) {
+    let container = document.createElement("div");
+    container.classList.add("book-card");
+
+    let titleSection = createBookCardSection("Book title", book.title);
+    container.appendChild(titleSection);
+
+    let authorSection = createBookCardSection("Book author", book.author);
+    container.appendChild(authorSection);
+
+    let pagesSection = createBookCardSection("Pages", book.pages);
+    container.appendChild(pagesSection);
+
+    let readSection = document.createElement("div");
+    let h2 = document.createElement("h2");
+    readSection.appendChild(h2)
+    h2.textContent = "Already read?";
+    let p = document.createElement("p");
+    if (book.read == true) {
+        p.textContent = "Yes";
+    }
+    else {
+        p.textContent = "No";
+    }
+    readSection.appendChild(p);
+    container.appendChild(readSection);
+
+    let button = document.createElement("btn");
+    button.setAttribute("id", "remove");
+    button.textContent = "Remove book";
+    container.appendChild(button)
+
+    return container;
+}
+
+function createBookCardSection(name, text) {
+    let container = document.createElement("div")
+
+    let h2 = document.createElement("h2");
+    h2.textContent = name
+
+    let p = document.createElement("p");
+    p.textContent = text;
+
+    container.appendChild(h2);
+    container.appendChild(p);
+
+    return container
 }

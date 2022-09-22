@@ -44,6 +44,7 @@ h1 {
     background-color: #EEF1FF;
 }
 
+
 /* Add new book */
 .new-book {
     display: flex;
@@ -87,4 +88,45 @@ form > button {
 
 form > button:hover {
     background-color: rgba(200, 200, 200, 0.8);
+}
+
+.book-card {
+    height: 300px;
+    width: 300px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.book-card > div {
+    margin: 1rem;
+}
+
+.book-card h2 {
+    font-weight: 700;
+    display: inline;
+}
+
+.book-card p {
+    display: inline;
+}
+
+#remove {
+    font-weight: 700;
+    background-color: rgba(250, 100, 100, 0.8);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+#remove:hover {
+    background-color: rgba(250, 0, 0, 0.8);
+}
+
+h2 + p {
+    margin-left: 1rem;
 }
